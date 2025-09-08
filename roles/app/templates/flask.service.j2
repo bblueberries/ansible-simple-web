@@ -1,0 +1,12 @@
+[Unit]
+Description=Flask App
+After=network.target
+
+[Service]
+User={{ flask_user }}
+WorkingDirectory={{ flask_app_dir }}
+ExecStart={{ flask_python }} {{ flask_app_dir }}/app.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

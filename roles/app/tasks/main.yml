@@ -1,0 +1,30 @@
+- name: Install Flask
+  ansible.builtin.apt:
+    name: python3-flask
+    state: present
+    update_cache: yes
+
+- name: Create app directory
+  ansible.builtin.file:
+    path: "{{ flask_app_dir }}"
+    state: directory
+    owner: "{{ flask_user }}"
+    group: "{{ flask_user }}"
+
+- name: Copy app.py to app directory
+  ansible.builtin.copy:
+    src: app.py
+    dest: "{{ flask_app_dir }}/app.py"
+    owner: "{{ flask_user }}"
+    group: "{{ flask_user }}"
+    mode: "0644"
+  notify: Restart flaskapp
+
+- name: Deploy systemd service
+  ansible.builtin.template:
+    src: flask.service.j2
+    dest: /etc/systemd/system/flaskapp.service
+    owner: root
+    group: root
+    mode: "0644"
+  notify: Restart flaskapp
