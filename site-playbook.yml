@@ -5,7 +5,7 @@
   vars_files:
     - vars/frontend.yml
   roles:
-    - frontend
+    - web
 
 - name: Configure backend app server
   hosts: backend
@@ -13,4 +13,4 @@
   vars_files:
     - vars/backend.yml
   roles:
-    - backend
+    - app

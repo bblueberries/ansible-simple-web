@@ -1,4 +1,4 @@
 web_root: /var/www/html
 server_name: _
-backend_ip: 172.31.25.186
+backend_ip: 172.31.21.233
 backend_port: 5000
