@@ -1,0 +1,10 @@
+- name: Install Nginx
+  ansible.builtin.apt:
+    name: nginx
+    update_cache: yes
+
+- name: Copy index.html to vm
+  ansible.builtin.copy:
+    src: index.html
+    dest: "{{ web_root }}/index.html"
+# - name: Deploy Nginx config
