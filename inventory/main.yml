@@ -1,0 +1,6 @@
+all:
+  children:
+    frontend:
+      hosts: 1.1.1.1
+    backend:
+      hosts: 2.2.2.2
