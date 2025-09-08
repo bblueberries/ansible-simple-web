@@ -1,0 +1,16 @@
+---
+- name: Configure backend app server
+  hosts: frontend
+  become: yes
+  vars_files:
+    - vars/frontend.yml
+  roles:
+    - frontend
+
+- name: Configure backend app server
+  hosts: backend
+  become: yes
+  vars_files:
+    - vars/backend.yml
+  roles:
+    - backend
