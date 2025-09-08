@@ -21,3 +21,9 @@
     dest: /etc/nginx/sites-enabled/frontend
     state: link
   notify: Reload nginx
+
+- name: Remove default nginx site
+  ansible.builtin.file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+  notify: Reload nginx
